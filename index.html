@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackBelt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asimovian&display=swap" rel="stylesheet">
+</head>
+<body>
+        <div class="top-panel">
+            <div class="categories">
+            <button class="filter-btn" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+
+            <div class="right-controls">
+            <div class="volume-wrapper">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.5">
+             </div>
+            <button id="helpBtn" class="help-btn" aria-label="Help">❓</button>
+            </div>
+        </div>
+
+<!-- 
+    <div class="belt-bar">
+        <div class="belt white"></div>
+        <div class="belt blue"></div>
+        <div class="belt purple"></div>
+        <div class="belt brown"></div>
+        <div class="belt black"></div>
+    </div>
+-->
+
+
+    <div class="content" id="addTaskWrapper">
+        <button id="addTaskBtn"> Begin New Quest 🔥 </button>
+        <div id="taskContainer"></div>
+    </div>
+
+<!-- Welcome Popup (single canonical block) -->
+<div id="welcomePopup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Welcome to BlackBelt</h2>
+    <p>Your journey begins here, warrior.</p>
+    <p>Forge your path by adding quests to the Questboard. With each step forward, you rise through the sacred belts of mastery.</p>
+    <p>White is only the beginning... the Black Belt awaits those who persevere. 🥋🔥</p>
+    <button id="closePopup">⚔️</button>
+  </div>
+</div>
+
+<div id="taskPopup" class="popup-overlay">
+  <div class="popup-content task-popup">
+    <h2>New Quest 🔥🥋</h2>
+    <p>Name your quest to begin your journey.</p>
+    <input type="text" id="taskNameInput" placeholder="Enter quest name..." />
+    <div class="popup-actions">
+      <button id="saveTaskBtn">Add Quest</button>
+      <button id="cancelTaskBtn" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+    <footer id="main-footer">
+        <p>Designed by Sriniketh Ponnada.</p>
+    </footer>
+    <script src="script.js"></script>
+
+    <audio id="bgMusic" loop autoplay>
+        <source src="Zen.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
