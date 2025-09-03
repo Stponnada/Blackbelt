@@ -410,3 +410,19 @@ body {
 }
 
 }
+
+
+/* ==============================
+   Error Messages
+   ============================== */
+.error-message {
+  margin-top: 6px;
+  color: #fff;
+  background: #fc5959;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Asimovian', sans-serif;
+  text-align: center;
+  display: none; /* hidden by default */
+}
