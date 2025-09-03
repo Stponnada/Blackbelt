@@ -412,17 +412,133 @@ body {
 }
 
 
+
 /* ==============================
-   Error Messages
+   Hamburger & Drawer (mobile)
    ============================== */
-.error-message {
-  margin-top: 6px;
-  color: #fff;
-  background: #fc5959;
-  padding: 8px 12px;
+.hamburger {
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none; /* shown on mobile only via media query */
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+/* Drawer positioned off-screen using transform to avoid any visible sliver */
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100%;
+  background: rgba(20,20,20,0.98);
+  box-shadow: 2px 0 12px rgba(0,0,0,0.5);
+  z-index: 3000;
+  padding: 18px;
+  transition: transform 0.28s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  transform: translateX(-100%); /* hide fully off-screen */
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.close-drawer {
+  align-self: flex-end;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
-  font-size: 14px;
+}
+
+/* Drawer content buttons reuse .filter-btn styles but make them full-width */
+.drawer .filter-btn {
+  width: 100%;
+  display: block;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: white;
+  border: 2px solid #333;
+}
+
+/* show hamburger and hide original controls on mobile */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .top-panel .filter-btn,
+  .top-panel .help-btn,
+  .top-panel .right-controls {
+    display: none !important;
+  }
+  /* keep footer and other elements layout unchanged by the drawer */
+  #main-footer {
+    position: fixed; /* keep footer fixed */
+    bottom: 0;
+  }
+}
+
+/* On larger screens ensure the drawer is hidden and hamburger removed visually */
+@media (min-width: 769px) {
+  .drawer { display: none; }
+  .hamburger { display: none; }
+}
+
+
+
+/* Mobile top-panel centered title */
+.mobile-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-family: 'Asimovian', sans-serif;
-  text-align: center;
-  display: none; /* hidden by default */
+  color: white;
+  font-size: 18px;
+  pointer-events: none;
+  display: none;
+  z-index: 2500;
+  letter-spacing: 0.6px;
+}
+
+/* Drawer footer sticks to bottom */
+.drawer-footer {
+  margin-top: auto; /* push to bottom */
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 55px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Ensure help button inside drawer footer keeps its desktop look */
+.drawer-footer .help-btn {
+  margin-left: auto;
+}
+
+/* Mobile only: show title and hide other top-panel controls (we already hide them, but ensure layout) */
+@media (max-width: 768px) {
+  .mobile-title { display: block; }
+  .top-panel { position: fixed; left: 0; right: 0; }
+  /* keep hamburger left aligned and leave space for centered title */
+  .top-panel .hamburger { z-index: 2600; }
 }
