@@ -271,6 +271,20 @@ document.addEventListener("DOMContentLoaded", () => {
 const bgMusic = document.getElementById("bgMusic");
 const volumeControl = document.getElementById("volumeControl");
 
+  // ===============================
+  // Pause/resume background music on app/tab visibility change
+  // ===============================
+  document.addEventListener("visibilitychange", () => {
+    if (bgMusic) {
+      if (document.hidden) {
+        bgMusic.pause();
+      } else {
+        bgMusic.play().catch(() => {
+          // Autoplay might be blocked until user interacts
+        });
+      }
+    }
+  });
 
 if (!bgMusic) {
 console.error("bgMusic element not found");
